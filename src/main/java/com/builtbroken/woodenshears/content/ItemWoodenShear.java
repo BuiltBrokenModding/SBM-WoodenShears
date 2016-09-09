@@ -1,10 +1,16 @@
 package com.builtbroken.woodenshears.content;
 
 import com.builtbroken.woodenshears.WoodenShears;
+
+import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
+
+import net.minecraftforge.client.model.ModelLoader;
 
 /**
  * Created by Dark on 8/11/2015.
@@ -12,13 +18,12 @@ import net.minecraft.nbt.NBTTagCompound;
 public class ItemWoodenShear extends ItemShears
 {
     //TODO add icons and recipes for other wood types
-    public ItemWoodenShear()
+    public ItemWoodenShear(ResourceLocation resourceLocation)
     {
         this.setMaxStackSize(1);
         this.setMaxDamage(WoodenShears.MAX_DAMAGE);
-        this.setCreativeTab(CreativeTabs.tabTools);
+        this.setCreativeTab(CreativeTabs.TOOLS);
         this.setUnlocalizedName(WoodenShears.PREFIX + "shears");
-        this.setTextureName(WoodenShears.PREFIX + "shears");
     }
 
     @Override

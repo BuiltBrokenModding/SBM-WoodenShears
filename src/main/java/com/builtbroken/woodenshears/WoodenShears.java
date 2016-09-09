@@ -1,25 +1,28 @@
 package com.builtbroken.woodenshears;
 
 import com.builtbroken.woodenshears.content.ItemWoodenShear;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
+
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 
-/**
- * Created by Dark on 7/25/2015.
- */
 @Mod(modid = WoodenShears.DOMAIN, name = "Wooden Shears", version = "@MAJOR@.@MINOR@.@REVIS@.@BUILD@")
 public class WoodenShears
 {
@@ -45,8 +48,10 @@ public class WoodenShears
         config.load();
         MAX_DAMAGE = config.getInt("Max_Durability", Configuration.CATEGORY_GENERAL, MAX_DAMAGE, 10, 1000, "Sets how many uses the tool has before breaking");
 
-        itemShears = new ItemWoodenShear();
-        GameRegistry.registerItem(itemShears, "wsShears");
+        ResourceLocation shears = new ResourceLocation(DOMAIN, "wshears");
+        itemShears = new ItemWoodenShear(shears);
+        GameRegistry.register(itemShears, shears);
+        ModelLoader.setCustomModelResourceLocation(itemShears, 0, new ModelResourceLocation(shears, "inventory"));
 
         proxy.preInit();
     }
@@ -60,7 +65,7 @@ public class WoodenShears
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-        GameRegistry.addShapedRecipe(new ItemStack(itemShears), "w w", " t ", "s s", 'w', new ItemStack(Blocks.planks), 't', Blocks.sapling, 's', Items.stick);
+        GameRegistry.addShapedRecipe(new ItemStack(itemShears), "w w", " t ", "s s", 'w', new ItemStack(Blocks.PLANKS), 't', Blocks.SAPLING, 's', Items.STICK);
         proxy.postInit();
         config.save();
     }
