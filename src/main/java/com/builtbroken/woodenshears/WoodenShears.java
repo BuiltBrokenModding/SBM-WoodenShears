@@ -51,7 +51,9 @@ public class WoodenShears
         ResourceLocation shears = new ResourceLocation(DOMAIN, "wshears");
         itemShears = new ItemWoodenShear(shears);
         GameRegistry.register(itemShears, shears);
-        ModelLoader.setCustomModelResourceLocation(itemShears, 0, new ModelResourceLocation(shears, "inventory"));
+        if (event.getSide().isClient()) {
+            ModelLoader.setCustomModelResourceLocation(itemShears, 0, new ModelResourceLocation(shears, "inventory"));
+        }
 
         proxy.preInit();
     }
