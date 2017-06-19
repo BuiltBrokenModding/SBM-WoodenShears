@@ -1,23 +1,16 @@
 package com.builtbroken.woodenshears;
 
 import com.builtbroken.woodenshears.content.ItemWoodenShear;
-
-import net.minecraftforge.client.model.ModelLoader;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-
-import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,7 +31,7 @@ public class WoodenShears
 
     public static int MAX_DAMAGE = 50;
 
-    public static Item itemShears;
+    public static ItemWoodenShear itemShears;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -48,12 +41,9 @@ public class WoodenShears
         config.load();
         MAX_DAMAGE = config.getInt("Max_Durability", Configuration.CATEGORY_GENERAL, MAX_DAMAGE, 10, 1000, "Sets how many uses the tool has before breaking");
 
-        ResourceLocation shears = new ResourceLocation(DOMAIN, "wshears");
-        itemShears = new ItemWoodenShear(shears);
-        GameRegistry.register(itemShears, shears);
-        if (event.getSide().isClient()) {
-            ModelLoader.setCustomModelResourceLocation(itemShears, 0, new ModelResourceLocation(shears, "inventory"));
-        }
+
+        itemShears = new ItemWoodenShear();
+        GameRegistry.register(itemShears, itemShears.resourceLocation);
 
         proxy.preInit();
     }

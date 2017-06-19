@@ -1,25 +1,28 @@
 package com.builtbroken.woodenshears.content;
 
 import com.builtbroken.woodenshears.WoodenShears;
-
-import net.minecraft.client.renderer.block.model.ModelBakery;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-import net.minecraftforge.client.model.ModelLoader;
+import java.util.List;
 
 /**
  * Created by Dark on 8/11/2015.
  */
 public class ItemWoodenShear extends ItemShears
 {
+    public ResourceLocation resourceLocation;
+
     //TODO add icons and recipes for other wood types
-    public ItemWoodenShear(ResourceLocation resourceLocation)
+    public ItemWoodenShear()
     {
+        resourceLocation = new ResourceLocation(WoodenShears.DOMAIN, "wshears");
         this.setMaxStackSize(1);
         this.setMaxDamage(WoodenShears.MAX_DAMAGE);
         this.setCreativeTab(CreativeTabs.TOOLS);
@@ -27,34 +30,60 @@ public class ItemWoodenShear extends ItemShears
     }
 
     @Override
-    public int getMaxDamage()
+    public int getMaxDamage(ItemStack stack)
     {
         return WoodenShears.MAX_DAMAGE;
     }
 
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
+    {
+        for (WoodTypes type : WoodTypes.values())
+        {
+            ItemStack stack = new ItemStack(itemIn);
+            setType(stack, type);
+            subItems.add(stack);
+        }
+    }
+
     /**
      * Type of the shear, used for Item Icon mainly
+     *
      * @param stack - this item
      * @return byte representing the icon to use
      */
-    public byte getType(ItemStack stack)
+    public WoodTypes getType(ItemStack stack)
     {
         if (stack.getTagCompound() != null && stack.getTagCompound().hasKey("mType"))
         {
-            return stack.getTagCompound().getByte("mType");
+            byte b = stack.getTagCompound().getByte("mType");
+            if (b > 0 && b < WoodTypes.values().length)
+            {
+                return WoodTypes.values()[b];
+            }
         }
-        return 0;
+        return WoodTypes.OAK;
     }
 
     /**
      * Sets the type of the item
+     *
      * @param stack - this item
-     * @param type type representing the preferred icon to use
+     * @param type  type representing the preferred icon to use
      */
-    public void setType(ItemStack stack, byte type)
+    public void setType(ItemStack stack, WoodTypes type)
     {
         if (stack.getTagCompound() == null)
+        {
             stack.setTagCompound(new NBTTagCompound());
-        stack.getTagCompound().setByte("mType", type);
+        }
+        stack.getTagCompound().setByte("mType", (byte) type.ordinal());
+    }
+
+    @Override
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        return super.getUnlocalizedName() + "." + getType(stack).name;
     }
 }
