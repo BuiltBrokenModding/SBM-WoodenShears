@@ -6,7 +6,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -17,15 +16,13 @@ import java.util.List;
  */
 public class ItemWoodenShear extends ItemShears
 {
-    public ResourceLocation resourceLocation;
 
     //TODO add icons and recipes for other wood types
     public ItemWoodenShear()
     {
-        resourceLocation = new ResourceLocation(WoodenShears.DOMAIN, "wshears");
         this.setMaxStackSize(1);
         this.setMaxDamage(WoodenShears.MAX_DAMAGE);
-        this.setCreativeTab(CreativeTabs.TOOLS);
+        this.setCreativeTab(CreativeTabs.tabTools);
         this.setUnlocalizedName(WoodenShears.PREFIX + "shears");
     }
 

@@ -2,7 +2,7 @@ package com.builtbroken.woodenshears.content;
 
 import com.builtbroken.woodenshears.WoodenShears;
 import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -15,7 +15,7 @@ public class CustomMeshDefinition implements ItemMeshDefinition
 
     public CustomMeshDefinition()
     {
-        defaultModelResourceLocation = new ModelResourceLocation(WoodenShears.itemShears.resourceLocation, "inventory");
+        defaultModelResourceLocation = new ModelResourceLocation(WoodenShears.itemShears.getRegistryName(), "inventory");
     }
 
     @Override

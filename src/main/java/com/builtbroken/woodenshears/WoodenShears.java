@@ -47,7 +47,7 @@ public class WoodenShears
 
 
         itemShears = new ItemWoodenShear();
-        GameRegistry.register(itemShears, itemShears.resourceLocation);
+        GameRegistry.registerItem(itemShears, "wshears");
 
         proxy.preInit();
     }
@@ -69,7 +69,7 @@ public class WoodenShears
         List<ItemStack> items = OreDictionary.getOres("plankWood");
         for (ItemStack stack : items)
         {
-            if (stack != null && stack.getItem() != Item.getItemFromBlock(Blocks.PLANKS))
+            if (stack != null && stack.getItem() != Item.getItemFromBlock(Blocks.planks))
             {
                 //TODO ensure type is not already supported
                 GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(WoodenShears.itemShears),

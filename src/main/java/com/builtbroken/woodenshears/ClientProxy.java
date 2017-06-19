@@ -2,7 +2,7 @@ package com.builtbroken.woodenshears;
 
 import com.builtbroken.woodenshears.content.CustomMeshDefinition;
 import com.builtbroken.woodenshears.content.WoodTypes;
-import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraftforge.client.model.ModelLoader;
 
 /**
