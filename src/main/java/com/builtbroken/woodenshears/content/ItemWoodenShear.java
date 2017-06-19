@@ -1,7 +1,9 @@
 package com.builtbroken.woodenshears.content;
 
 import com.builtbroken.woodenshears.WoodenShears;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
@@ -24,6 +26,12 @@ public class ItemWoodenShear extends ItemShears
         this.setMaxDamage(WoodenShears.MAX_DAMAGE);
         this.setCreativeTab(CreativeTabs.tabTools);
         this.setUnlocalizedName(WoodenShears.PREFIX + "shears");
+    }
+
+    @Override
+    public ModelResourceLocation getModel(ItemStack stack, EntityPlayer player, int useRemaining)
+    {
+        return CustomMeshDefinition.instance.getModelLocation(stack);
     }
 
     @Override

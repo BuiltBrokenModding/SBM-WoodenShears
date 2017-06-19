@@ -45,7 +45,6 @@ public class WoodenShears
         config.load();
         MAX_DAMAGE = config.getInt("Max_Durability", Configuration.CATEGORY_GENERAL, MAX_DAMAGE, 10, 1000, "Sets how many uses the tool has before breaking");
 
-
         itemShears = new ItemWoodenShear();
         GameRegistry.registerItem(itemShears, "wshears");
 

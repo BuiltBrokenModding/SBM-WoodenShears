@@ -11,6 +11,8 @@ import net.minecraft.item.ItemStack;
  */
 public class CustomMeshDefinition implements ItemMeshDefinition
 {
+    public static CustomMeshDefinition instance = new CustomMeshDefinition();
+
     public final ModelResourceLocation defaultModelResourceLocation;
 
     public CustomMeshDefinition()

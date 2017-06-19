@@ -14,12 +14,11 @@ public class ClientProxy extends CommonProxy
     public void preInit()
     {
         super.preInit();
-        CustomMeshDefinition meshDefinition = new CustomMeshDefinition();
-        ModelBakery.registerItemVariants(WoodenShears.itemShears, meshDefinition.defaultModelResourceLocation);
         for (WoodTypes type : WoodTypes.values())
         {
             ModelBakery.registerItemVariants(WoodenShears.itemShears, type.getModelResourceLocation());
         }
-        ModelLoader.setCustomMeshDefinition(WoodenShears.itemShears, meshDefinition);
+        ModelLoader.setCustomMeshDefinition(WoodenShears.itemShears, CustomMeshDefinition.instance);
+        //ModelLoader.setCustomModelResourceLocation(WoodenShears.itemShears, 0, CustomMeshDefinition.instance.defaultModelResourceLocation);
     }
 }
