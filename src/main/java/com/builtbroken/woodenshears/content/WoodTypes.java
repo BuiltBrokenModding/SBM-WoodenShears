@@ -4,7 +4,6 @@ import com.builtbroken.woodenshears.WoodenShears;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -58,7 +57,7 @@ public enum WoodTypes
     {
         if(blockID != null)
         {
-            Block block = BlockPlanks.getBlockFromName(blockID);
+            Block block = Block.getBlockFromName(blockID);
             if(block != null)
             {
                 ItemStack stack = new ItemStack(WoodenShears.itemShears);
@@ -68,9 +67,9 @@ public enum WoodTypes
                         " t ",
                         "s s",
                         'w', new ItemStack(block, 1, blockMeta),
-                        't', Blocks.SAPLING, 's', "stickWood"));
+                        't', "treeSapling",
+                        's', "stickWood"));
             }
         }
-
     }
 }

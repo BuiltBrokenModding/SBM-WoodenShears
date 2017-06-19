@@ -77,7 +77,7 @@ public class WoodenShears
                         " t ",
                         "s s",
                         'w', stack,
-                        't', Blocks.SAPLING,
+                        't', "treeSapling",
                         's', "stickWood"));
             }
         }
