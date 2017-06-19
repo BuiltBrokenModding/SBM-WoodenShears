@@ -5,10 +5,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
+
+import java.util.List;
 
 /**
  * Created by Dark on 8/11/2015.
@@ -63,6 +66,18 @@ public class ItemWoodenShear extends ItemShears
             stack.setTagCompound(new NBTTagCompound());
         }
         stack.getTagCompound().setByte("mType", (byte) type.ordinal());
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item itemIn, CreativeTabs tab, List subItems)
+    {
+        for (WoodTypes type : WoodTypes.values())
+        {
+            ItemStack stack = new ItemStack(itemIn);
+            setType(stack, type);
+            subItems.add(stack);
+        }
     }
 
     @Override
