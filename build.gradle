@@ -23,7 +23,7 @@ plugins {
   id "se.bjurr.gitchangelog.git-changelog-gradle-plugin" version "1.45"
 }
 
-apply from: 'https://raw.githubusercontent.com/BuiltBrokenModding/BuiltBrokenScripts/1.10.2/index/index.gradle'
+apply from: 'https://raw.githubusercontent.com/BuiltBrokenModding/BuiltBrokenScripts/1.11/index/index.gradle'
 apply plugin: 'com.github.kt3k.coveralls'
 apply plugin: 'jacoco'
 
