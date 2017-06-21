@@ -2,15 +2,13 @@ package com.builtbroken.woodenshears.content;
 
 import com.builtbroken.woodenshears.WoodenShears;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 /**
  * Created by Dark on 8/11/2015.
@@ -37,13 +35,16 @@ public class ItemWoodenShear extends ItemShears
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
     {
-        for (WoodTypes type : WoodTypes.values())
+        if (tab == CreativeTabs.TOOLS)
         {
-            ItemStack stack = new ItemStack(itemIn);
-            setType(stack, type);
-            subItems.add(stack);
+            for (WoodTypes type : WoodTypes.values())
+            {
+                ItemStack stack = new ItemStack(this);
+                setType(stack, type);
+                items.add(stack);
+            }
         }
     }
 

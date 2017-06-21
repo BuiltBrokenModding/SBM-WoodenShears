@@ -1,12 +1,8 @@
 package com.builtbroken.woodenshears.content;
 
 import com.builtbroken.woodenshears.WoodenShears;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 /**
  * @see <a href="https://github.com/BuiltBrokenModding/VoltzEngine/blob/development/license.md">License</a> for what you can and can't do with the code.
@@ -51,25 +47,5 @@ public enum WoodTypes
             modelResourceLocation = new ModelResourceLocation(WoodenShears.itemShears.getRegistryName() + "_" + name, "inventory");
         }
         return modelResourceLocation;
-    }
-
-    public void registerRecipe()
-    {
-        if(blockID != null)
-        {
-            Block block = Block.getBlockFromName(blockID);
-            if(block != null)
-            {
-                ItemStack stack = new ItemStack(WoodenShears.itemShears);
-                WoodenShears.itemShears.setType(stack, this);
-                GameRegistry.addRecipe(new ShapedOreRecipe(stack,
-                        "w w",
-                        " t ",
-                        "s s",
-                        'w', new ItemStack(block, 1, blockMeta),
-                        't', "treeSapling",
-                        's', "stickWood"));
-            }
-        }
     }
 }

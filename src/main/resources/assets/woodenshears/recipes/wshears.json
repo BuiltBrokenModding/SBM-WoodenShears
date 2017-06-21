@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "woodenshears:wshears"
+  },
+  "group": "stuff",
+  "pattern": [
+    "w w",
+    " t ",
+    "s s"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "w": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "t": {
+      "type": "forge:ore_dict",
+      "ore": "treeSapling"
+    },
+    "s": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  }
+}
