@@ -20,7 +20,6 @@ apply plugin: 'com.github.kt3k.coveralls'
 apply plugin: 'jacoco'
 apply from: "https://raw.githubusercontent.com/BuiltBrokenModding/BuiltBrokenScripts/1.12/scripts/forge/deps.gradle"
 
-
 println archivesBaseName 
 
 dependencies 
