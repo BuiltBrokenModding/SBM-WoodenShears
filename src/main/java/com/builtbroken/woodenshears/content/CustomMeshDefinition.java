@@ -15,7 +15,7 @@ public class CustomMeshDefinition implements ItemMeshDefinition
 
     public CustomMeshDefinition()
     {
-        defaultModelResourceLocation = new ModelResourceLocation(WoodenShears.itemShears.resourceLocation, "inventory");
+        defaultModelResourceLocation = new ModelResourceLocation(WoodenShears.itemShears.getRegistryName(), "inventory");
     }
 
     @Override

@@ -1,13 +1,16 @@
 package com.builtbroken.woodenshears;
 
 import com.builtbroken.woodenshears.content.ItemWoodenShear;
+import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -33,14 +36,12 @@ public class WoodenShears
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
+        MinecraftForge.EVENT_BUS.register(this);
+
         LOGGER = LogManager.getLogger("WoodenShears");
         config = new Configuration(new File(event.getModConfigurationDirectory(), "bbm/Wooden_Shears.cfg"));
         config.load();
         MAX_DAMAGE = config.getInt("Max_Durability", Configuration.CATEGORY_GENERAL, MAX_DAMAGE, 10, 1000, "Sets how many uses the tool has before breaking");
-
-
-        itemShears = new ItemWoodenShear();
-        GameRegistry.register(itemShears, itemShears.resourceLocation);
 
         proxy.preInit();
     }
@@ -56,5 +57,12 @@ public class WoodenShears
     {
         proxy.postInit();
         config.save();
+    }
+
+    @SubscribeEvent
+    public void registerItems(RegistryEvent.Register<Item> event)
+    {
+        event.getRegistry().register(itemShears = new ItemWoodenShear());
+        proxy.onItemRegistered();
     }
 }
