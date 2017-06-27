@@ -1,0 +1,29 @@
+{
+  "result": {
+    "item": "woodenshears:wshears",
+    "nbt": {
+      "mType": 0
+    }
+  },
+  "group": "woodenshears:wshears",
+  "pattern": [
+    "w w",
+    " t ",
+    "s s"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "w": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "t": {
+      "type": "forge:ore_dict",
+      "ore": "treeSapling"
+    },
+    "s": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  }
+}

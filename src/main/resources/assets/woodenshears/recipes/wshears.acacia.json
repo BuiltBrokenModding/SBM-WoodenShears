@@ -1,8 +1,11 @@
 {
   "result": {
-    "item": "woodenshears:wshears"
+    "item": "woodenshears:wshears",
+    "nbt": {
+      "mType": 1
+    }
   },
-  "group": "stuff",
+  "group": "woodenshears:wshears",
   "pattern": [
     "w w",
     " t ",
@@ -11,8 +14,8 @@
   "type": "forge:ore_shaped",
   "key": {
     "w": {
-      "type": "forge:ore_dict",
-      "ore": "plankWood"
+      "item": "minecraft:planks",
+      "data": 4
     },
     "t": {
       "type": "forge:ore_dict",

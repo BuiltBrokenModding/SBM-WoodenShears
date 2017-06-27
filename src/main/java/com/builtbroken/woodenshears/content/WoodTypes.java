@@ -10,13 +10,13 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
  */
 public enum WoodTypes
 {
-    OAK("oak", "minecraft:planks", BlockPlanks.EnumType.OAK.ordinal()),
-    ACACIA("acacia", "minecraft:planks", BlockPlanks.EnumType.ACACIA.ordinal()),
-    BIRCH("birch", "minecraft:planks", BlockPlanks.EnumType.BIRCH.ordinal()),
-    JUNGLE("jungle", "minecraft:planks", BlockPlanks.EnumType.JUNGLE.ordinal()),
-    SPRUCE("spruce", "minecraft:planks", BlockPlanks.EnumType.SPRUCE.ordinal()),
-    BIG_OAK("big_oak", "minecraft:planks", BlockPlanks.EnumType.DARK_OAK.ordinal()),
-    CHARRED("charred");
+    /* 0 */OAK("oak", "minecraft:planks", BlockPlanks.EnumType.OAK.ordinal()),
+    /* 1 */ACACIA("acacia", "minecraft:planks", BlockPlanks.EnumType.ACACIA.ordinal()),
+    /* 2 */BIRCH("birch", "minecraft:planks", BlockPlanks.EnumType.BIRCH.ordinal()),
+    /* 3 */JUNGLE("jungle", "minecraft:planks", BlockPlanks.EnumType.JUNGLE.ordinal()),
+    /* 4 */SPRUCE("spruce", "minecraft:planks", BlockPlanks.EnumType.SPRUCE.ordinal()),
+    /* 5 */BIG_OAK("big_oak", "minecraft:planks", BlockPlanks.EnumType.DARK_OAK.ordinal()),
+    /* 6 */CHARRED("charred");
     //TODO add support for other mods
 
     /** Name to use for textures and unlocalizations */
