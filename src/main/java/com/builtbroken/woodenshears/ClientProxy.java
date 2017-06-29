@@ -11,9 +11,9 @@ import net.minecraftforge.client.model.ModelLoader;
 public class ClientProxy extends CommonProxy
 {
     @Override
-    public void onItemRegistered()
+    public void doLoadModels()
     {
-        super.onItemRegistered();
+        super.doLoadModels();
         CustomMeshDefinition meshDefinition = new CustomMeshDefinition();
         ModelBakery.registerItemVariants(WoodenShears.itemShears, meshDefinition.defaultModelResourceLocation);
         for (WoodTypes type : WoodTypes.values())

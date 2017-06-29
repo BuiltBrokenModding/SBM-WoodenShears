@@ -2,7 +2,7 @@ package com.builtbroken.woodenshears;
 
 import com.builtbroken.woodenshears.content.ItemWoodenShear;
 import net.minecraft.item.Item;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,6 +17,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 
 @Mod(modid = WoodenShears.DOMAIN, name = "Wooden Shears", version = "@MAJOR@.@MINOR@.@REVIS@.@BUILD@")
+@Mod.EventBusSubscriber(modid = WoodenShears.DOMAIN)
 public class WoodenShears
 {
     public static final String DOMAIN = "woodenshears";
@@ -33,11 +34,21 @@ public class WoodenShears
 
     public static ItemWoodenShear itemShears;
 
+    @SubscribeEvent
+    public static void registerItems(RegistryEvent.Register<Item> event)
+    {
+        event.getRegistry().register(itemShears = new ItemWoodenShear());
+    }
+
+    @SubscribeEvent
+    public static void registerAllModels(ModelRegistryEvent event)
+    {
+        proxy.doLoadModels();
+    }
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        MinecraftForge.EVENT_BUS.register(this);
-
         LOGGER = LogManager.getLogger("WoodenShears");
         config = new Configuration(new File(event.getModConfigurationDirectory(), "bbm/Wooden_Shears.cfg"));
         config.load();
@@ -57,12 +68,5 @@ public class WoodenShears
     {
         proxy.postInit();
         config.save();
-    }
-
-    @SubscribeEvent
-    public void registerItems(RegistryEvent.Register<Item> event)
-    {
-        event.getRegistry().register(itemShears = new ItemWoodenShear());
-        proxy.onItemRegistered();
     }
 }

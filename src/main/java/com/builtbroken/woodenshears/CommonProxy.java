@@ -24,7 +24,7 @@ public class CommonProxy implements IGuiHandler
 
     }
 
-    public void onItemRegistered()
+    public void doLoadModels()
     {
 
     }
