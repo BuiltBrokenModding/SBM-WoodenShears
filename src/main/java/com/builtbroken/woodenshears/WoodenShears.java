@@ -1,26 +1,31 @@
 package com.builtbroken.woodenshears;
 
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.builtbroken.woodenshears.content.ItemWoodenShear;
 import com.builtbroken.woodenshears.content.WoodTypes;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent.OnConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import java.io.File;
-import java.util.List;
 
 @Mod(modid = WoodenShears.DOMAIN, name = "Wooden Shears", version = "@MAJOR@.@MINOR@.@REVIS@.@BUILD@")
+@Mod.EventBusSubscriber
 public class WoodenShears
 {
     public static final String DOMAIN = "woodenshears";
@@ -31,9 +36,7 @@ public class WoodenShears
 
     public static Logger LOGGER;
 
-    public static Configuration config;
-
-    public static int MAX_DAMAGE = 50;
+    public static final int DEFAULT_DURABILITY = 50;
 
     public static ItemWoodenShear itemShears;
 
@@ -41,11 +44,6 @@ public class WoodenShears
     public void preInit(FMLPreInitializationEvent event)
     {
         LOGGER = LogManager.getLogger("WoodenShears");
-        config = new Configuration(new File(event.getModConfigurationDirectory(), "bbm/Wooden_Shears.cfg"));
-        config.load();
-        MAX_DAMAGE = config.getInt("Max_Durability", Configuration.CATEGORY_GENERAL, MAX_DAMAGE, 10, 1000, "Sets how many uses the tool has before breaking");
-
-
         itemShears = new ItemWoodenShear();
         GameRegistry.register(itemShears, itemShears.resourceLocation);
 
@@ -82,6 +80,12 @@ public class WoodenShears
             }
         }
         proxy.postInit();
-        config.save();
+    }
+
+    @SubscribeEvent
+    public static void onConfigChanged(OnConfigChangedEvent event)
+    {
+        if(event.getModID().equals(DOMAIN))
+            ConfigManager.sync(DOMAIN, Config.Type.INSTANCE);
     }
 }
