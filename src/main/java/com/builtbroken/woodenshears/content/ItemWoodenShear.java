@@ -23,7 +23,7 @@ public class ItemWoodenShear extends ItemShears
         this.setMaxStackSize(1);
         this.setMaxDamage(WoodenShearsConfig.DEFAULT_DURABILITY);
         this.setCreativeTab(CreativeTabs.TOOLS);
-        this.setUnlocalizedName(WoodenShears.PREFIX + "shears");
+        this.setTranslationKey(WoodenShears.PREFIX + "shears");
     }
 
     @Override
@@ -95,8 +95,8 @@ public class ItemWoodenShear extends ItemShears
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack stack)
+    public String getTranslationKey(ItemStack stack)
     {
-        return super.getUnlocalizedName() + "." + getType(stack).name;
+        return super.getTranslationKey() + "." + getType(stack).name;
     }
 }
