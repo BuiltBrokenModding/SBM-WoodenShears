@@ -1,6 +1,10 @@
 package com.builtbroken.woodenshears.content;
 
+import java.util.List;
+
 import com.builtbroken.woodenshears.WoodenShears;
+import com.builtbroken.woodenshears.WoodenShearsConfig;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemShears;
@@ -9,8 +13,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 /**
  * Created by Dark on 8/11/2015.
@@ -24,7 +26,7 @@ public class ItemWoodenShear extends ItemShears
     {
         resourceLocation = new ResourceLocation(WoodenShears.DOMAIN, "wshears");
         this.setMaxStackSize(1);
-        this.setMaxDamage(WoodenShears.MAX_DAMAGE);
+        this.setMaxDamage(WoodenShears.DEFAULT_DURABILITY);
         this.setCreativeTab(CreativeTabs.TOOLS);
         this.setUnlocalizedName(WoodenShears.PREFIX + "shears");
     }
@@ -32,7 +34,20 @@ public class ItemWoodenShear extends ItemShears
     @Override
     public int getMaxDamage(ItemStack stack)
     {
-        return WoodenShears.MAX_DAMAGE;
+        WoodTypes type = getType(stack);
+
+        switch(type)
+        {
+            case OAK: return WoodenShearsConfig.OAK_DURABILITY;
+            case SPRUCE: return WoodenShearsConfig.SPRUCE_DURABILITY;
+            case BIRCH: return WoodenShearsConfig.BIRCH_DURABILITY;
+            case JUNGLE: return WoodenShearsConfig.JUNGLE_DURABILITY;
+            case ACACIA: return WoodenShearsConfig.ACACIA_DURABILITY;
+            case BIG_OAK: return WoodenShearsConfig.DARK_OAK_DURABILITY;
+            case CHARRED: return WoodenShearsConfig.CHARRED_DURABILITY;
+        }
+
+        return WoodenShears.DEFAULT_DURABILITY;
     }
 
     @Override
