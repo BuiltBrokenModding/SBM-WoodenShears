@@ -1,57 +1,53 @@
 buildscript {
     repositories {
+        maven { url = 'https://files.minecraftforge.net/maven' }
         jcenter()
-        maven { url = "http://files.minecraftforge.net/maven" }
+        mavenCentral()
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+    }
+}
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
+
+version = '1.0.0'
+group = 'sbm-woodenshears'
+archivesBaseName = 'SBM-WoodenShears'
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+
+minecraft {
+    mappings channel: 'stable', version: '43-1.13'
+	
+    runs {
+        client = {
+            properties 'forge.logging.markers': 'SCAN,REGISTRIES,REGISTRYDUMP'
+            properties 'forge.logging.console.level': 'debug'
+            workingDirectory project.file('run').canonicalPath
+            source sourceSets.main
+        }
+        server = {
+            properties 'forge.logging.markers': 'SCAN,REGISTRIES,REGISTRYDUMP'
+            properties 'forge.logging.console.level': 'debug'
+            workingDirectory project.file('run').canonicalPath
+            source sourceSets.main
+        }
     }
 }
 
-plugins {
-  id 'com.matthewprenger.cursegradle' version '1.0.9'
-  id 'net.saliman.cobertura' version '2.2.5'
-  id 'com.github.kt3k.coveralls' version '2.0.1'
-  id "se.bjurr.gitchangelog.git-changelog-gradle-plugin" version "1.45"
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.13.2-25.0.13'
 }
 
-apply from: 'https://raw.githubusercontent.com/BuiltBrokenModding/BuiltBrokenScripts/1.12/index/index.gradle'
-apply plugin: 'com.github.kt3k.coveralls'
-apply plugin: 'jacoco'
-apply from: "https://raw.githubusercontent.com/BuiltBrokenModding/BuiltBrokenScripts/1.12/scripts/forge/deps.gradle"
-
-println archivesBaseName 
-
-dependencies 
-{
-    testCompile 'junit:junit:4.11'
-}
-
-
-jacocoTestReport {
-    reports {
-        xml.enabled = true // coveralls plugin depends on xml format report
-        html.enabled = true
+jar {
+    manifest {
+        attributes(["Specification-Title": "SBM-WoodenShears",
+                    "Specification-Vendor": "Built Broken Modding",
+                    "Specification-Version": "0.0.1",
+                    "Implementation-Title": "SBM-WoodenShears",
+                    "Implementation-Version": "0.0.1",
+                    "Implementation-Vendor" :"Built Broken Modding",
+                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
     }
 }
-
-task makeChangelog(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
-    filePath = "changelog.html"
-    untaggedName = "Current release ${project.version}"
-    fromCommit = startGitRev
-    toRef =  "HEAD"
-    templateContent = """
-{{#tags}}
-<h1> Highly untested and may break world</h1>
-  <h3>{{name}}</h3>
-  <ul>
-    {{#commits}}
-    <li> <a href="https://github.com/BuiltBrokenModding/SBM-woodenShears/commit/{{hash}}" target=_blank> {{{message}}}</a>
-</li>
-    {{/commits}}
-  </ul>
-{{/tags}}
-"""
-}
-
-tasks.build.dependsOn makeChangelog
