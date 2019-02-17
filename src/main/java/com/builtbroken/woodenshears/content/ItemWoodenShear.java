@@ -43,7 +43,6 @@ public class ItemWoodenShear extends ItemShears
     /**
      * Type of the shear, used for damage mainly
      *
-     * @param stack - this item
      * @return byte representing the type of this shear
      */
     public WoodTypes getType()
