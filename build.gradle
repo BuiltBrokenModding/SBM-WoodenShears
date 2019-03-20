@@ -5,6 +5,7 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath "org.ajoberstar:grgit:2.1.0"
     }
 }
 
@@ -18,7 +19,7 @@ plugins {
 apply from: 'https://raw.githubusercontent.com/BuiltBrokenModding/BuiltBrokenScripts/1.12/index/index.gradle'
 apply plugin: 'com.github.kt3k.coveralls'
 apply plugin: 'jacoco'
-apply from: "https://raw.githubusercontent.com/BuiltBrokenModding/BuiltBrokenScripts/1.12/scripts/forge/deps.gradle"
+//apply from: "https://raw.githubusercontent.com/BuiltBrokenModding/BuiltBrokenScripts/1.12/scripts/forge/deps.gradle"
 
 println archivesBaseName 
 
@@ -34,24 +35,3 @@ jacocoTestReport {
         html.enabled = true
     }
 }
-
-task makeChangelog(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
-    filePath = "changelog.html"
-    untaggedName = "Current release ${project.version}"
-    fromCommit = startGitRev
-    toRef =  "HEAD"
-    templateContent = """
-{{#tags}}
-<h1> Highly untested and may break world</h1>
-  <h3>{{name}}</h3>
-  <ul>
-    {{#commits}}
-    <li> <a href="https://github.com/BuiltBrokenModding/SBM-woodenShears/commit/{{hash}}" target=_blank> {{{message}}}</a>
-</li>
-    {{/commits}}
-  </ul>
-{{/tags}}
-"""
-}
-
-tasks.build.dependsOn makeChangelog
