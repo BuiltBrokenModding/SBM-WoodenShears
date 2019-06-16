@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "woodenshears:oak_shears"
+  },
+  "group": "woodenshears:wshears",
+  "pattern": [
+    "w w",
+    " t ",
+    "s s"
+  ],
+  "type": "crafting_shaped",
+  "key": {
+    "w": {
+      "item": "minecraft:oak_planks"
+    },
+    "t": {
+      "tag": "minecraft:saplings"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  }
+}

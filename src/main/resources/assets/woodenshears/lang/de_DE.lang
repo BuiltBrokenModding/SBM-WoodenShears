@@ -1,9 +1,0 @@
-item.woodenshears:shears.name=Holzschere
-
-item.woodenshears:shears.oak.name=Eichenholzschere
-item.woodenshears:shears.acacia.name=Akazienholzschere
-item.woodenshears:shears.birch.name=Birkenholzschere
-item.woodenshears:shears.jungle.name=Tropenholzschere
-item.woodenshears:shears.spruce.name=Fichtenholzschere
-item.woodenshears:shears.big_oak.name=Schwarzeichenholzschere
-item.woodenshears:shears.charred.name=Verkohlte Schere

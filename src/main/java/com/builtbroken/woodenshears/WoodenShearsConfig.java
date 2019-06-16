@@ -1,45 +1,76 @@
 package com.builtbroken.woodenshears;
 
-import net.minecraftforge.common.config.Config;
 
-@Config(modid=WoodenShears.DOMAIN, name="bbm/Wooden_Shears")
+import net.minecraftforge.common.ForgeConfigSpec;
+import org.apache.commons.lang3.tuple.Pair;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class WoodenShearsConfig
 {
-    @Config.Ignore
-    public static final int DEFAULT_DURABILITY = 50;
+    public static Map<String,Integer> map = new HashMap<>();
+    public static final ServerConfig SERVER;
+    public static final ForgeConfigSpec SERVER_SPEC;
 
-    @Config.Name("durability_oak")
-    @Config.Comment("Sets how many uses the oak shears have before breaking")
-    @Config.RangeInt(min=10, max=1000)
-    public static int OAK_DURABILITY = DEFAULT_DURABILITY;
+    static {
+        final Pair<ServerConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(ServerConfig::new);
+        SERVER_SPEC = specPair.getRight();
+        SERVER = specPair.getLeft();
+    }
 
-    @Config.Name("durability_spruce")
-    @Config.Comment("Sets how many uses the spruce shears have before breaking")
-    @Config.RangeInt(min=10, max=1000)
-    public static int SPRUCE_DURABILITY = DEFAULT_DURABILITY;
+    public static class ServerConfig {
 
-    @Config.Name("durability_birch")
-    @Config.Comment("Sets how many uses the birch shears have before breaking")
-    @Config.RangeInt(min=10, max=1000)
-    public static int BIRCH_DURABILITY = DEFAULT_DURABILITY;
+        public static ForgeConfigSpec.IntValue oak_durability;
+        public static ForgeConfigSpec.IntValue spruce_durability;
+        public static ForgeConfigSpec.IntValue birch_durability;
+        public static ForgeConfigSpec.IntValue jungle_durability;
+        public static ForgeConfigSpec.IntValue acacia_durability;
+        public static ForgeConfigSpec.IntValue dark_oak_durability;
+        public static ForgeConfigSpec.IntValue charred_durability;
 
-    @Config.Name("durability_jungle")
-    @Config.Comment("Sets how many uses the jungle shears hav before breaking")
-    @Config.RangeInt(min=10, max=1000)
-    public static int JUNGLE_DURABILITY = DEFAULT_DURABILITY;
+        ServerConfig(ForgeConfigSpec.Builder builder) {
+            builder.push("general");
+            oak_durability = builder
+                    .comment("Sets how many uses the oak shears have before breaking")
+                    .translation("text.recipes.oak_shears.config.durability")
+                    .defineInRange("offset",50,10,1000);
+            spruce_durability = builder
+                    .comment("Sets how many uses the spruce shears have before breaking")
+                    .translation("text.recipes.spruce_shears.config.durability")
+                    .defineInRange("offset",50,10,1000);
+            birch_durability = builder
+                    .comment("Sets how many uses the birch shears have before breaking")
+                    .translation("text.recipes.birch_shears.config.durability")
+                    .defineInRange("offset",50,10,1000);
+            jungle_durability = builder
+                    .comment("Sets how many uses the jungle shears have before breaking")
+                    .translation("text.recipes.jungle_shears.config.durability")
+                    .defineInRange("offset",50,10,1000);
+            acacia_durability = builder
+                    .comment("Sets how many uses the acacia shears have before breaking")
+                    .translation("text.recipes.acacia_shears.config.durability")
+                    .defineInRange("offset",50,10,1000);
+            dark_oak_durability = builder
+                    .comment("Sets how many uses the dark oak shears have before breaking")
+                    .translation("text.recipes.dark_oak_shears.config.durability")
+                    .defineInRange("offset",50,10,1000);
+            charred_durability = builder
+                    .comment("Sets how many uses the charred shears have before breaking")
+                    .translation("text.recipes.acacia_shears.config.durability")
+                    .defineInRange("charred",50,10,1000);
+            builder.pop();
+        }
+    }
 
-    @Config.Name("durability_acacia")
-    @Config.Comment("Sets how many uses the acacia shears have before breaking")
-    @Config.RangeInt(min=10, max=1000)
-    public static int ACACIA_DURABILITY = DEFAULT_DURABILITY;
 
-    @Config.Name("durability_dark_oak")
-    @Config.Comment("Sets how many uses the dark oak shears have before breaking")
-    @Config.RangeInt(min=10, max=1000)
-    public static int DARK_OAK_DURABILITY = DEFAULT_DURABILITY;
-
-    @Config.Name("durability_charred")
-    @Config.Comment("Sets how many uses the charred shears have before breaking")
-    @Config.RangeInt(min=10, max=1000)
-    public static int CHARRED_DURABILITY = DEFAULT_DURABILITY;
+    public static void bake(){
+        map.put("acacia",ServerConfig.acacia_durability.get());
+        map.put("birch",ServerConfig.birch_durability.get());
+        map.put("dark_oak",ServerConfig.dark_oak_durability.get());
+        map.put("jungle",ServerConfig.jungle_durability.get());
+        map.put("spruce",ServerConfig.spruce_durability.get());
+        map.put("oak",ServerConfig.oak_durability.get());
+        map.put("charred",ServerConfig.charred_durability.get());
+    }
 }

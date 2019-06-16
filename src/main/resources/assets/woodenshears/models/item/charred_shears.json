@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "woodenshears:items/shears.acacia"
+		"layer0": "woodenshears:items/charred_shears"
 	}
 }
