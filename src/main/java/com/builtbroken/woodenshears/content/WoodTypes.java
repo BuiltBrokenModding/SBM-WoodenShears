@@ -1,6 +1,7 @@
 package com.builtbroken.woodenshears.content;
 
-import net.minecraft.init.Blocks;
+
+import net.minecraft.block.Blocks;
 
 /**
  * @see <a href="https://github.com/BuiltBrokenModding/VoltzEngine/blob/development/license.md">License</a> for what you can and can't do with the code.

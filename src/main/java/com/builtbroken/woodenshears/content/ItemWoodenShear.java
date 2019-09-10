@@ -2,16 +2,15 @@ package com.builtbroken.woodenshears.content;
 
 import com.builtbroken.woodenshears.WoodenShears;
 import com.builtbroken.woodenshears.WoodenShearsConfig;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemShears;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ShearsItem;
 
 /**
  * Created by Dark on 8/11/2015.
  */
-public class ItemWoodenShear extends ItemShears
+public class ItemWoodenShear extends ShearsItem
 {
     private WoodTypes type;
 
