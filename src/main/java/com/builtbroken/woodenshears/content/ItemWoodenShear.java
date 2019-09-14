@@ -17,7 +17,10 @@ public class ItemWoodenShear extends ShearsItem
     //TODO add icons and recipes for other wood types
     public ItemWoodenShear(WoodTypes type)
     {
-        super(new Item.Properties().group(ItemGroup.TOOLS).maxStackSize(1).defaultMaxDamage(WoodenShearsConfig.DEFAULT_DURABILITY));
+        super(new Item.Properties()
+                .group(ItemGroup.TOOLS)
+                .maxStackSize(1)
+                .defaultMaxDamage(WoodenShearsConfig.DEFAULT_DURABILITY));
         this.setRegistryName(WoodenShears.DOMAIN, "wshears_" + type.name);
         this.type = type;
     }
