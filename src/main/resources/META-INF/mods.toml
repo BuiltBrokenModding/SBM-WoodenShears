@@ -13,13 +13,13 @@ description='''Simple addition of primitive shears made of wood''' #mandatory
 [[dependencies.woodenshears]]
     modId="forge"
     mandatory=true
-    versionRange="[27,)"
+    versionRange="[30,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.woodenshears]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.14,1.15)"
+    versionRange="[1.15,1.16)"
     ordering="NONE"
     side="BOTH"
