@@ -1,7 +1,5 @@
 package com.builtbroken.woodenshears.content;
-
-
-import net.minecraft.block.Blocks;
+import net.minecraftforge.common.ForgeConfigSpec;
 
 /**
  * @see <a href="https://github.com/BuiltBrokenModding/VoltzEngine/blob/development/license.md">License</a> for what you can and can't do with the code.
@@ -9,28 +7,32 @@ import net.minecraft.block.Blocks;
  */
 public enum WoodTypes
 {
-    /* 0 */OAK("oak", Blocks.OAK_PLANKS.getRegistryName().toString()),
-    /* 1 */ACACIA("acacia", Blocks.ACACIA_PLANKS.getRegistryName().toString()),
-    /* 2 */BIRCH("birch", Blocks.BIRCH_PLANKS.getRegistryName().toString()),
-    /* 3 */JUNGLE("jungle", Blocks.JUNGLE_PLANKS.getRegistryName().toString()),
-    /* 4 */SPRUCE("spruce", Blocks.SPRUCE_PLANKS.getRegistryName().toString()),
-    /* 5 */BIG_OAK("big_oak", Blocks.DARK_OAK_PLANKS.getRegistryName().toString()),
-    /* 6 */CHARRED("charred");
-    //TODO add support for other mods
+    /* 0 */OAK("oak", "oak"),
+    /* 1 */ACACIA("acacia", "acacia"),
+    /* 2 */BIRCH("birch", "birch"),
+    /* 3 */JUNGLE("jungle", "jungle"),
+    /* 4 */SPRUCE("spruce", "spruce"),
+    /* 5 */BIG_OAK("big_oak", "dark_oak"),
+    /* 6 */CHARRED("charred", "charred");
 
     /** Name to use for textures and localizations */
     public final String name;
+    /** Prefix for config names */
+    public final String configName;
 
-    public String blockID;
+    private ForgeConfigSpec.IntValue durability;
 
-    WoodTypes(String name, String blockID)
-    {
-        this(name);
-        this.blockID = blockID;
-    }
-
-    WoodTypes(String name)
+    WoodTypes(String name, String configName)
     {
         this.name = name;
+        this.configName = configName;
+    }
+
+    public void genDurabilityConfig(ForgeConfigSpec.Builder builder) {
+        durability = builder.defineInRange("durability_" + configName, getDurability(), 1, 10000);
+    }
+
+    public int getDurability() {
+        return durability != null ? durability.get() : 50;
     }
 }
