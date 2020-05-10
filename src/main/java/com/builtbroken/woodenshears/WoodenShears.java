@@ -2,7 +2,6 @@ package com.builtbroken.woodenshears;
 
 import com.builtbroken.woodenshears.content.ItemWoodenShear;
 import com.builtbroken.woodenshears.content.WoodTypes;
-
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
