@@ -2,40 +2,45 @@
   "type": "woodenshears:wooden_shears_harvest",
   "conditions": [
     {
-      "condition": "minecraft:match_tool",
-      "predicate": {
-        "item": "woodenshears:wshears_acacia"
-      }
-    },
-    {
-      "condition": "minecraft:match_tool",
-      "predicate": {
-        "item": "woodenshears:wshears_big_oak"
-      }
-    },
-    {
-      "condition": "minecraft:match_tool",
-      "predicate": {
-        "item": "woodenshears:wshears_birch"
-      }
-    },
-    {
-      "condition": "minecraft:match_tool",
-      "predicate": {
-        "item": "woodenshears:wshears_jungle"
-      }
-    },
-    {
-      "condition": "minecraft:match_tool",
-      "predicate": {
-        "item": "woodenshears:wshears_oak"
-      }
-    },
-    {
-      "condition": "minecraft:match_tool",
-      "predicate": {
-        "item": "woodenshears:wshears_spruce"
-      }
+      "condition": "minecraft:alternative",
+      "terms": [
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "item": "woodenshears:wshears_acacia"
+          }
+        },
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "item": "woodenshears:wshears_big_oak"
+          }
+        },
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "item": "woodenshears:wshears_birch"
+          }
+        },
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "item": "woodenshears:wshears_jungle"
+          }
+        },
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "item": "woodenshears:wshears_oak"
+          }
+        },
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "item": "woodenshears:wshears_spruce"
+          }
+        }
+      ]
     }
   ]
 }
