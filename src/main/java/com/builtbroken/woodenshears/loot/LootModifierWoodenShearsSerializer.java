@@ -2,7 +2,7 @@ package com.builtbroken.woodenshears.loot;
 
 import com.google.gson.JsonObject;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.storage.loot.conditions.ILootCondition;
+import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 
 /**
@@ -15,4 +15,6 @@ public class LootModifierWoodenShearsSerializer extends GlobalLootModifierSerial
     {
         return new LootModifierWoodenShears(conditions);
     }
+
+
 }
