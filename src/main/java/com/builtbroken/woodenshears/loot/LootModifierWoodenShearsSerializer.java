@@ -16,5 +16,4 @@ public class LootModifierWoodenShearsSerializer extends GlobalLootModifierSerial
         return new LootModifierWoodenShears(conditions);
     }
 
-
 }

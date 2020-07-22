@@ -49,5 +49,4 @@ public class LootModifierWoodenShears extends LootModifier
                 .build(LootParameterSets.BLOCK);
     }
 
-
 }
