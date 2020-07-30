@@ -14,12 +14,12 @@ apply plugin: 'idea'
 
 version = '1.1.0'
 group = 'woodenshears'
-archivesBaseName = 'SBM-WoodenShears-1.15.2'
+archivesBaseName = 'SBM-WoodenShears-1.16.1'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200225-1.15.1'
+    mappings channel: 'snapshot', version: '20200707-1.16.1'
 	
     runs {
         client {
@@ -61,7 +61,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.15.2-31.1.77'
+    minecraft 'net.minecraftforge:forge:1.16.1-32.0.70'
 }
 
 jar {
