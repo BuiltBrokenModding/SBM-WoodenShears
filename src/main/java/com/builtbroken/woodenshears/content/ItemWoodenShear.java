@@ -19,9 +19,9 @@ public class ItemWoodenShear extends ShearsItem
     public ItemWoodenShear(WoodTypes woodType)
     {
         super(new Item.Properties()
-                .group(ItemGroup.TOOLS)
-                .maxStackSize(1)
-                .defaultMaxDamage(woodType.getDurability()));
+                .tab(ItemGroup.TAB_TOOLS)
+                .stacksTo(1)
+                .defaultDurability(woodType.getDurability()));
         this.setRegistryName(WoodenShears.DOMAIN, "wshears_" + woodType.name);
         this.woodType = woodType;
     }

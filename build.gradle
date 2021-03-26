@@ -1,11 +1,10 @@
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
-        jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
@@ -14,13 +13,16 @@ apply plugin: 'idea'
 
 version = '1.1.0'
 group = 'woodenshears'
-archivesBaseName = 'SBM-WoodenShears-1.16.1'
+archivesBaseName = 'SBM-WoodenShears-1.16.5'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+
+println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200707-1.16.1'
-	
+
+    mappings channel: 'official', version: '1.16.5'
+
     runs {
         client {
             workingDirectory project.file('run')
@@ -61,16 +63,16 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.1-32.0.70'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.1.0'
 }
 
 jar {
     manifest {
         attributes(["Specification-Title": "SBM-WoodenShears",
                     "Specification-Vendor": "Built Broken Modding",
-                    "Specification-Version": "0.0.1",
+                    "Specification-Version": "1",
                     "Implementation-Title": "SBM-WoodenShears",
-                    "Implementation-Version": "0.0.1",
+                    "Implementation-Version": "${version}",
                     "Implementation-Vendor" :"Built Broken Modding",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
     }

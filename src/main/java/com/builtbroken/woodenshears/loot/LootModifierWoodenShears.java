@@ -29,24 +29,24 @@ public class LootModifierWoodenShears extends LootModifier
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context)
     {
-        final BlockState blockState = context.get(LootParameters.BLOCK_STATE);
+        final BlockState blockState = context.getParamOrNull(LootParameters.BLOCK_STATE);
         if (blockState != null)
         {
-            return lootTable(context, blockState).generate(createContext(context));
+            return lootTable(context, blockState).getRandomItems(createContext(context));
         }
         return generatedLoot;
     }
 
     private LootTable lootTable(LootContext context, BlockState blockState)
     {
-        return context.getWorld().getServer().getLootTableManager().getLootTableFromLocation(blockState.getBlock().getLootTable());
+        return context.getLootTable(blockState.getBlock().getLootTable());
     }
 
     private LootContext createContext(LootContext context)
     {
         return new LootContext.Builder(context)
                 .withParameter(LootParameters.TOOL, new ItemStack(Items.SHEARS))
-                .build(LootParameterSets.BLOCK);
+                .create(LootParameterSets.BLOCK);
     }
 
 }

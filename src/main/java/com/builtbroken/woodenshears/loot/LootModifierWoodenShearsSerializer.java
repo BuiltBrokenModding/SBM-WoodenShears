@@ -16,4 +16,10 @@ public class LootModifierWoodenShearsSerializer extends GlobalLootModifierSerial
         return new LootModifierWoodenShears(conditions);
     }
 
+    @Override
+    public JsonObject write(LootModifierWoodenShears instance)
+    {
+        return null;
+    }
+
 }
