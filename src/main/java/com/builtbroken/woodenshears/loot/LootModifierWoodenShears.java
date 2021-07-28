@@ -1,13 +1,13 @@
 package com.builtbroken.woodenshears.loot;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.LootParameterSets;
-import net.minecraft.loot.LootParameters;
-import net.minecraft.loot.LootTable;
-import net.minecraft.loot.conditions.ILootCondition;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.LootModifier;
 
 import javax.annotation.Nonnull;
@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class LootModifierWoodenShears extends LootModifier
 {
-    public LootModifierWoodenShears(ILootCondition[] conditionsIn)
+    public LootModifierWoodenShears(LootItemCondition[] conditionsIn)
     {
         super(conditionsIn);
     }
@@ -29,7 +29,7 @@ public class LootModifierWoodenShears extends LootModifier
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context)
     {
-        final BlockState blockState = context.getParamOrNull(LootParameters.BLOCK_STATE);
+        final BlockState blockState = context.getParamOrNull(LootContextParams.BLOCK_STATE);
         if (blockState != null)
         {
             return lootTable(context, blockState).getRandomItems(createContext(context));
@@ -45,8 +45,8 @@ public class LootModifierWoodenShears extends LootModifier
     private LootContext createContext(LootContext context)
     {
         return new LootContext.Builder(context)
-                .withParameter(LootParameters.TOOL, new ItemStack(Items.SHEARS))
-                .create(LootParameterSets.BLOCK);
+                .withParameter(LootContextParams.TOOL, new ItemStack(Items.SHEARS))
+                .create(LootContextParamSets.BLOCK);
     }
 
 }

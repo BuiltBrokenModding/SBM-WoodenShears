@@ -1,8 +1,8 @@
 package com.builtbroken.woodenshears.loot;
 
 import com.google.gson.JsonObject;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.loot.conditions.ILootCondition;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 
 /**
@@ -11,7 +11,7 @@ import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 public class LootModifierWoodenShearsSerializer extends GlobalLootModifierSerializer<LootModifierWoodenShears>
 {
     @Override
-    public LootModifierWoodenShears read(ResourceLocation location, JsonObject object, ILootCondition[] conditions)
+    public LootModifierWoodenShears read(ResourceLocation location, JsonObject object, LootItemCondition[] conditions)
     {
         return new LootModifierWoodenShears(conditions);
     }

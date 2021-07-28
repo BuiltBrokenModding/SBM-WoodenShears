@@ -1,8 +1,11 @@
 package com.builtbroken.woodenshears;
 
-import com.builtbroken.woodenshears.content.ItemWoodenShear;
 import com.builtbroken.woodenshears.content.WoodTypes;
-import net.minecraft.item.Item;
+import com.builtbroken.woodenshears.content.WoodenShearItem;
+import net.minecraft.core.dispenser.ShearsDispenseItemBehavior;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ShearsItem;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -26,6 +29,11 @@ public class WoodenShears
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event)
     {
-        Arrays.stream(WoodTypes.values()).forEach(type ->  event.getRegistry().register(new ItemWoodenShear(type)));
+        Arrays.stream(WoodTypes.values()).forEach(type -> {
+            ShearsItem shears=new WoodenShearItem(type);
+            event.getRegistry().register(shears);
+            DispenserBlock.registerBehavior(shears,new ShearsDispenseItemBehavior());
+        });
+
     }
 }
