@@ -14,7 +14,10 @@ Downloads: https://www.curseforge.com/minecraft/mc-mods/sbm-wooden-shears
 
 ### MC1.17.1 - v1.1.0 - July 28th, 2021
 
-Ported 1.17.1
+#### User changes
+
+* Updated: MC version 1.17.1
+* Added: dispenser capability to wooden shears
 
 ### MC1.16.1 - v1.1.0 - March 25th, 2021
 
