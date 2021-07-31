@@ -1,5 +1,6 @@
 package com.builtbroken.woodenshears.loot;
 
+import com.builtbroken.woodenshears.content.WoodenShearItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
@@ -30,7 +31,8 @@ public class LootModifierWoodenShears extends LootModifier
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context)
     {
         final BlockState blockState = context.getParamOrNull(LootContextParams.BLOCK_STATE);
-        if (blockState != null)
+        final ItemStack itemStack = context.getParamOrNull(LootContextParams.TOOL);
+        if (blockState != null && itemStack.getItem() instanceof WoodenShearItem)
         {
             return lootTable(context, blockState).getRandomItems(createContext(context));
         }

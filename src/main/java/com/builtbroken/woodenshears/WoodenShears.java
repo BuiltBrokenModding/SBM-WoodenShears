@@ -16,7 +16,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import java.util.Arrays;
 
 @Mod(WoodenShears.DOMAIN)
-@Mod.EventBusSubscriber(bus=Bus.MOD)
+@Mod.EventBusSubscriber(bus = Bus.MOD)
 public class WoodenShears
 {
     public static final String DOMAIN = "woodenshears";
@@ -30,10 +30,9 @@ public class WoodenShears
     public static void registerItems(RegistryEvent.Register<Item> event)
     {
         Arrays.stream(WoodTypes.values()).forEach(type -> {
-            ShearsItem shears=new WoodenShearItem(type);
+            ShearsItem shears = new WoodenShearItem(type);
             event.getRegistry().register(shears);
-            DispenserBlock.registerBehavior(shears,new ShearsDispenseItemBehavior());
+            DispenserBlock.registerBehavior(shears, new ShearsDispenseItemBehavior());
         });
-
     }
 }
