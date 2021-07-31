@@ -8,6 +8,10 @@ Downloads: https://www.curseforge.com/minecraft/mc-mods/sbm-wooden-shears
 
 ## Change Log
 
+### MC1.17.1 - v1.1.1 - July 31st, 2021
+
+* Fixed: Infinite loop with global loot manager
+
 ### MC1.17.1 - v1.1.0 - July 28th, 2021
 
 Ported 1.17.1
