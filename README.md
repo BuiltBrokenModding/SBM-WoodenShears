@@ -8,6 +8,18 @@ Downloads: https://www.curseforge.com/minecraft/mc-mods/sbm-wooden-shears
 
 ## Change Log
 
+### MC1.17.1 - v1.1.0 - July 28th, 2021
+
+Ported 1.17.1
+
+### MC1.16.1 - v1.1.0 - March 25th, 2021
+
+Ported to 1.16.5
+
+### MC1.16.1 - v1.1.0 - July 2nd, 2020
+
+Ported to 1.16.1
+
 ### MC1.15.2 - v1.1.0 - May 12th, 2020
 
 #### User changes
