@@ -22,7 +22,7 @@ public class WoodenShearItem extends ShearsItem
                 .tab(CreativeModeTab.TAB_TOOLS)
                 .stacksTo(1)
                 .defaultDurability(woodType.getDurability()));
-        this.setRegistryName(WoodenShears.DOMAIN, "wshears_" + woodType.name);
+        this.setRegistryName(WoodenShears.DOMAIN, woodType.getItemRegistryName());
         this.woodType = woodType;
     }
 

@@ -13,10 +13,12 @@ public enum WoodTypes
     /* 3 */JUNGLE("jungle", "jungle"),
     /* 4 */SPRUCE("spruce", "spruce"),
     /* 5 */BIG_OAK("big_oak", "dark_oak"),
-    /* 6 */CHARRED("charred", "charred");
+    /* 6 */CHARRED("charred", "charred"),
+    /* 7 */CRIMSON("crimson", "crimson"),
+    /* 8 */WARPED("warped", "warped");
 
     /** Name to use for textures and localizations */
-    public final String name;
+    public final String itemName;
     /** Prefix for config names */
     public final String configName;
 
@@ -24,7 +26,7 @@ public enum WoodTypes
 
     WoodTypes(String name, String configName)
     {
-        this.name = name;
+        this.itemName = name;
         this.configName = configName;
     }
 
@@ -34,5 +36,9 @@ public enum WoodTypes
 
     public int getDurability() {
         return durability != null ? durability.get() : 50;
+    }
+
+    public String getItemRegistryName() {
+        return "wshears_" + itemName;
     }
 }

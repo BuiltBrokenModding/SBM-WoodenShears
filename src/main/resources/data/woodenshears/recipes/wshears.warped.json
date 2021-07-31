@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "woodenshears:wshears_warped"
+  },
+  "group": "woodenshears:wshears",
+  "pattern": [
+    "w w",
+    " t ",
+    "s s"
+  ],
+  "type": "crafting_shaped",
+  "key": {
+    "w": {
+      "item": "minecraft:warped_planks"
+    },
+    "t": {
+      "tag": "minecraft:saplings"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  }
+}

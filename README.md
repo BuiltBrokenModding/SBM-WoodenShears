@@ -8,6 +8,18 @@ Downloads: https://www.curseforge.com/minecraft/mc-mods/sbm-wooden-shears
 
 ## Change Log
 
+### MC1.17.1 - v1.2.0 - July 31st, 2021
+
+### User changes
+
+* Added: crimson shears
+* Added: warped shears
+
+### Dev changes
+
+* Renamed: WoodTypes#name to WoodTypes:itemName after IDE suggestion
+* Moved: dispenser registry to FmlCommonSetupEvent
+
 ### MC1.17.1 - v1.1.1 - July 31st, 2021
 
 * Fixed: Infinite loop with global loot manager
