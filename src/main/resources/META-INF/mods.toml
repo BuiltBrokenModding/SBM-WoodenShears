@@ -1,5 +1,5 @@
 modLoader="javafml" #mandatory
-loaderVersion="[37,)" #mandatory
+loaderVersion="[38,)" #mandatory
 issueTrackerURL="https://github.com/BuiltBrokenModding/SBM-woodenShears/issues"
 displayURL="http://minecraft.curseforge.com/projects/sbm-wooden-shears"
 authors="BuiltBrokenModding"
@@ -7,20 +7,20 @@ license="All rights reserved"
 
 [[mods]] #mandatory
 modId="woodenshears" #mandatory
-version="1.2.0" #mandatory
+version = "${file.jarVersion}" #mandatory
 displayName="SBM-Wooden Shears" #mandatory
 description='''Simple addition of primitive shears made of wood''' #mandatory
 
 [[dependencies.woodenshears]]
     modId="forge"
     mandatory=true
-    versionRange="[37,)"
+    versionRange="[38,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.woodenshears]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.17.1,1.18)"
+    versionRange="[1.18,1.19)"
     ordering="NONE"
     side="BOTH"

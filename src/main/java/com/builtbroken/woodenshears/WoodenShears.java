@@ -40,7 +40,7 @@ public class WoodenShears
         //Common is invoked off main thread, queue to main thread
         event.enqueueWork(() -> Arrays.stream(WoodTypes.values()).forEach(type -> {
             //Look up item, other mods may replace our items for things such as progression
-            final Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(DOMAIN, type.itemName));
+            final Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(DOMAIN, type.getItemRegistryName()));
             DispenserBlock.registerBehavior(item, new ShearsDispenseItemBehavior());
         }));
     }
