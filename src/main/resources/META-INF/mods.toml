@@ -7,7 +7,7 @@ license="All rights reserved"
 
 [[mods]] #mandatory
 modId="woodenshears" #mandatory
-version="1.2.0" #mandatory
+version = "${file.jarVersion}" #mandatory
 displayName="SBM-Wooden Shears" #mandatory
 description='''Simple addition of primitive shears made of wood''' #mandatory
 
