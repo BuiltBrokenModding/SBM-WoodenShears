@@ -2,6 +2,8 @@ package com.builtbroken.woodenshears.content;
 import com.builtbroken.woodenshears.WoodenShears;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.flag.FeatureFlag;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.ForgeConfigSpec;
@@ -21,7 +23,8 @@ public enum WoodTypes
     /* 6 */CHARRED("charred", "charred", null),
     /* 7 */CRIMSON("crimson", "crimson", Blocks.CRIMSON_PLANKS),
     /* 8 */WARPED("warped", "warped", Blocks.WARPED_PLANKS),
-    /* 9 */MANGROVE("mangrove", "mangrove", Blocks.MANGROVE_PLANKS);
+    /* 9 */MANGROVE("mangrove", "mangrove", Blocks.MANGROVE_PLANKS),
+    /* 10 */BAMBOO("bamboo", "bamboo", Blocks.BAMBOO_PLANKS, FeatureFlags.UPDATE_1_20);
 
     /** Name to use for textures and localizations */
     public final String itemName;
@@ -29,14 +32,22 @@ public enum WoodTypes
     public final String configName;
     /** Planks for recipe generation */
     public final Block planksBlock;
+    /** Required feature flags for experimental blocks (example: bamboo shear for 1.20 experimental pack) */
+    public final FeatureFlag[] requiredFeatures;
 
     private ForgeConfigSpec.IntValue durability;
 
     WoodTypes(String name, String configName, Block planksBlock)
     {
+        this(name, configName, planksBlock, FeatureFlags.VANILLA);
+    }
+
+    WoodTypes(String name, String configName, Block planksBlock, FeatureFlag... requiredFeatures)
+    {
         this.itemName = name;
         this.configName = configName;
         this.planksBlock = planksBlock;
+        this.requiredFeatures = requiredFeatures;
     }
 
     public void genDurabilityConfig(ForgeConfigSpec.Builder builder) {

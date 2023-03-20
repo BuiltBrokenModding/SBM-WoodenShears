@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "securitycraft:wshears",
+  "key": {
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "t": {
+      "tag": "minecraft:saplings"
+    },
+    "w": {
+      "item": "minecraft:bamboo_planks"
+    }
+  },
+  "pattern": [
+    "w w",
+    " t ",
+    "s s"
+  ],
+  "result": {
+    "item": "woodenshears:wshears_bamboo"
+  }
+}

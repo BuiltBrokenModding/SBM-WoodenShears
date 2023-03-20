@@ -16,7 +16,7 @@ public class WoodenShearItem extends ShearsItem
 
     public WoodenShearItem(WoodTypes woodType)
     {
-        super(new Item.Properties().stacksTo(1));
+        super(new Item.Properties().stacksTo(1).requiredFeatures(woodType.requiredFeatures));
         this.woodType = woodType;
     }
 
