@@ -18,6 +18,7 @@ public class DataGenRegistrar {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper existingFileHelper = new ExistingFileHelper(Collections.EMPTY_LIST, Collections.EMPTY_SET, false, null, null);
 
+        generator.addProvider(event.includeServer(), new GlobalLootModifierGenerator(generator));
         generator.addProvider(event.includeClient(), new ItemModelGenerator(generator, existingFileHelper));
         generator.addProvider(event.includeServer(), new ItemTagGenerator(generator, existingFileHelper));
         generator.addProvider(event.includeServer(), new RecipeGenerator(generator));
