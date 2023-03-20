@@ -1,25 +1,28 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://maven.parchmentmc.org' }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 version = '1.2.1'
 group = 'woodenshears'
-archivesBaseName = 'SBM-WoodenShears-1.18'
+archivesBaseName = 'SBM-WoodenShears-1.18.2'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-    mappings channel: 'official', version: '1.18'
+    mappings channel: 'parchment', version: '2022.11.06-1.18.2'
     runs {
         client {
             properties 'forge.logging.console.level': 'debug'
@@ -35,7 +38,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18-38.0.4'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.2.0'
 }
 
 jar {
