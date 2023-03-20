@@ -17,12 +17,12 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 version = '1.2.1'
 group = 'woodenshears'
-archivesBaseName = 'SBM-WoodenShears-1.19.3'
+archivesBaseName = 'SBM-WoodenShears-1.19.4'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-    mappings channel: 'parchment', version: '2023.03.12-1.19.3'
+    mappings channel: 'parchment', version: '1.19.3-2023.03.12-1.19.4'
     runs {
         client {
             properties 'forge.logging.console.level': 'debug'
@@ -49,7 +49,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.3-44.1.23'
+    minecraft 'net.minecraftforge:forge:1.19.4-45.0.13'
 }
 
 sourceSets.main.resources {

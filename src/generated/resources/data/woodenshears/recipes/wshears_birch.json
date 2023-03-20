@@ -20,5 +20,6 @@
   ],
   "result": {
     "item": "woodenshears:wshears_birch"
-  }
+  },
+  "show_notification": true
 }

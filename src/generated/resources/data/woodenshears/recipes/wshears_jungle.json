@@ -20,5 +20,6 @@
   ],
   "result": {
     "item": "woodenshears:wshears_jungle"
-  }
+  },
+  "show_notification": true
 }

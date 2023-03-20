@@ -20,5 +20,6 @@
   ],
   "result": {
     "item": "woodenshears:wshears_spruce"
-  }
+  },
+  "show_notification": true
 }

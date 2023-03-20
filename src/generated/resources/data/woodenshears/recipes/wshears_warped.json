@@ -20,5 +20,6 @@
   ],
   "result": {
     "item": "woodenshears:wshears_warped"
-  }
+  },
+  "show_notification": true
 }

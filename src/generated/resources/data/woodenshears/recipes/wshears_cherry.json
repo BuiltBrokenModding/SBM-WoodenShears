@@ -10,7 +10,7 @@
       "tag": "minecraft:saplings"
     },
     "w": {
-      "item": "minecraft:bamboo_planks"
+      "item": "minecraft:cherry_planks"
     }
   },
   "pattern": [
@@ -19,7 +19,7 @@
     "s s"
   ],
   "result": {
-    "item": "woodenshears:wshears_bamboo"
+    "item": "woodenshears:wshears_cherry"
   },
   "show_notification": true
 }

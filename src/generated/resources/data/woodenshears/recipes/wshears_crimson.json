@@ -20,5 +20,6 @@
   ],
   "result": {
     "item": "woodenshears:wshears_crimson"
-  }
+  },
+  "show_notification": true
 }

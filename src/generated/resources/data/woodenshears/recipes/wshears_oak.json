@@ -20,5 +20,6 @@
   ],
   "result": {
     "item": "woodenshears:wshears_oak"
-  }
+  },
+  "show_notification": true
 }

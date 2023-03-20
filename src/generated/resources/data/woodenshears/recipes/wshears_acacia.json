@@ -20,5 +20,6 @@
   ],
   "result": {
     "item": "woodenshears:wshears_acacia"
-  }
+  },
+  "show_notification": true
 }
