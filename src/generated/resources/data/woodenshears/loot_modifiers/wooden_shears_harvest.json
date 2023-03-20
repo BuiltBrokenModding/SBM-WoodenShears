@@ -1,0 +1,11 @@
+{
+  "type": "woodenshears:wooden_shears_harvest",
+  "conditions": [
+    {
+      "condition": "minecraft:match_tool",
+      "predicate": {
+        "tag": "woodenshears:wshears"
+      }
+    }
+  ]
+}

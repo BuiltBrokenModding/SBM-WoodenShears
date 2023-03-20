@@ -1,6 +1,6 @@
 {
-  "replace" : false,
-  "entries" : [
+  "entries": [
     "woodenshears:wooden_shears_harvest"
-  ]
+  ],
+  "replace": false
 }
