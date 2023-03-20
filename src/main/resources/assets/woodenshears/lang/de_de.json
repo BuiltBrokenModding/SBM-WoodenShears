@@ -1,11 +1,12 @@
 {
-    "item.woodenshears.wshears": "Holzschere",
-
     "item.woodenshears.wshears_oak": "Eichenholzschere",
     "item.woodenshears.wshears_acacia": "Akazienholzschere",
     "item.woodenshears.wshears_birch": "Birkenholzschere",
     "item.woodenshears.wshears_jungle": "Tropenholzschere",
     "item.woodenshears.wshears_spruce": "Fichtenholzschere",
     "item.woodenshears.wshears_big_oak": "Schwarzeichenholzschere",
-    "item.woodenshears.wshears_charred": "Verkohlte Schere"
+    "item.woodenshears.wshears_charred": "Verkohlte Schere",
+    "item.woodenshears.wshears_crimson": "Karmesinschere",
+    "item.woodenshears.wshears_warped": "Wirrschere",
+    "item.woodenshears.wshears_mangrove": "Mangrovenholzschere"
 }
