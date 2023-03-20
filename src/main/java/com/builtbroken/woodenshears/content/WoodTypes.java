@@ -1,4 +1,7 @@
 package com.builtbroken.woodenshears.content;
+import com.builtbroken.woodenshears.WoodenShears;
+
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 /**
@@ -15,7 +18,8 @@ public enum WoodTypes
     /* 5 */BIG_OAK("big_oak", "dark_oak"),
     /* 6 */CHARRED("charred", "charred"),
     /* 7 */CRIMSON("crimson", "crimson"),
-    /* 8 */WARPED("warped", "warped");
+    /* 8 */WARPED("warped", "warped"),
+    /* 8 */MANGROVE("mangrove", "mangrove");
 
     /** Name to use for textures and localizations */
     public final String itemName;
@@ -38,7 +42,7 @@ public enum WoodTypes
         return durability != null ? durability.get() : 50;
     }
 
-    public String getItemRegistryName() {
-        return "wshears_" + itemName;
+    public ResourceLocation getItemRegistryName() {
+        return new ResourceLocation(WoodenShears.DOMAIN, "wshears_" + itemName);
     }
 }

@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": { 
-		"layer0": "woodenshears:items/wshears"
+		"layer0": "woodenshears:item/shears.mangrove"
 	}
 }

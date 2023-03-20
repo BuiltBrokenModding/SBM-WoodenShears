@@ -1,6 +1,5 @@
 package com.builtbroken.woodenshears.content;
 
-import com.builtbroken.woodenshears.WoodenShears;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -20,9 +19,7 @@ public class WoodenShearItem extends ShearsItem
     {
         super(new Item.Properties()
                 .tab(CreativeModeTab.TAB_TOOLS)
-                .stacksTo(1)
-                .defaultDurability(woodType.getDurability()));
-        this.setRegistryName(WoodenShears.DOMAIN, woodType.getItemRegistryName());
+                .stacksTo(1));
         this.woodType = woodType;
     }
 
@@ -30,5 +27,10 @@ public class WoodenShearItem extends ShearsItem
     public int getMaxDamage(ItemStack stack)
     {
         return woodType.getDurability();
+    }
+
+    @Override
+    public boolean canBeDepleted() {
+        return woodType.getDurability() > 0;
     }
 }

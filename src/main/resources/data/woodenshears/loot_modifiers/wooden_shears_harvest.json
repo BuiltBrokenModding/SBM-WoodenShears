@@ -39,6 +39,12 @@
           "predicate": {
             "item": "woodenshears:wshears_spruce"
           }
+        },
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "item": "woodenshears:wshears_mangrove"
+          }
         }
       ]
     }
