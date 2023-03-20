@@ -5,8 +5,9 @@ import java.util.function.Consumer;
 
 import com.builtbroken.woodenshears.content.WoodTypes;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.tags.ItemTags;
@@ -15,18 +16,18 @@ import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class RecipeGenerator extends RecipeProvider {
-    public RecipeGenerator(DataGenerator generator) {
-        super(generator);
+    public RecipeGenerator(PackOutput output) {
+        super(output);
     }
 
     @Override
-    protected final void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
         Arrays.stream(WoodTypes.values()).forEach(type -> {
             if (type.planksBlock == null)
                 return;
             //Look up item, other mods may replace our items for things such as progression
             final Item item = ForgeRegistries.ITEMS.getValue(type.getItemRegistryName());
-            ShapedRecipeBuilder.shaped(item, 1)
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, item, 1)
             .group("securitycraft:wshears")
             .pattern("w w")
             .pattern(" t ")
@@ -37,10 +38,5 @@ public class RecipeGenerator extends RecipeProvider {
             .unlockedBy("has_block", has(ItemTags.PLANKS))
             .save(consumer);
         });
-    }
-
-    @Override
-    public String getName() {
-        return "Wooden Shears Recipes";
     }
 }

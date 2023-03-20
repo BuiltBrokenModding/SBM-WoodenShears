@@ -9,8 +9,13 @@ import net.minecraft.core.dispenser.ShearsDispenseItemBehavior;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.CreativeModeTab.TabVisibility;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -40,6 +45,27 @@ public class WoodenShears
             event.register(Keys.ITEMS, helper -> Arrays.stream(WoodTypes.values()).forEach(type -> helper.register(type.getItemRegistryName(), new WoodenShearItem(type))));
         else if (event.getRegistryKey() == Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS)
             event.register(Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, helper -> helper.register("wooden_shears_harvest", LootModifierWoodenShears.CODEC.get()));
+    }
+
+    @SubscribeEvent
+    public static void onCreativeModeTabBuildContents(CreativeModeTabEvent.BuildContents event)
+    {
+        if (event.getTab() == CreativeModeTabs.TOOLS_AND_UTILITIES)
+        {
+            ItemStack previous = new ItemStack(Items.SHEARS);
+
+            for (WoodTypes type : WoodTypes.values())
+            {
+                Item item = ForgeRegistries.ITEMS.getValue(type.getItemRegistryName());
+
+                if(!item.requiredFeatures().isSubsetOf(event.getFlags()))
+                    continue;
+
+                ItemStack stack = new ItemStack(item);
+                event.getEntries().putAfter(previous, stack, TabVisibility.PARENT_AND_SEARCH_TABS);
+                previous = stack;
+            }
+        }
     }
 
     @SubscribeEvent

@@ -5,13 +5,13 @@ import java.util.Arrays;
 import com.builtbroken.woodenshears.WoodenShears;
 import com.builtbroken.woodenshears.content.WoodTypes;
 
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ItemModelGenerator extends ItemModelProvider {
-    public ItemModelGenerator(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, WoodenShears.DOMAIN, existingFileHelper);
+    public ItemModelGenerator(PackOutput output, ExistingFileHelper existingFileHelper) {
+        super(output, WoodenShears.DOMAIN, existingFileHelper);
     }
 
     @Override

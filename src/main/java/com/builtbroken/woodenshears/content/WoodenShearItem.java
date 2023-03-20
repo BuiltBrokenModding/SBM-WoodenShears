@@ -1,6 +1,5 @@
 package com.builtbroken.woodenshears.content;
 
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShearsItem;
@@ -17,9 +16,7 @@ public class WoodenShearItem extends ShearsItem
 
     public WoodenShearItem(WoodTypes woodType)
     {
-        super(new Item.Properties()
-                .tab(CreativeModeTab.TAB_TOOLS)
-                .stacksTo(1));
+        super(new Item.Properties().stacksTo(1));
         this.woodType = woodType;
     }
 
