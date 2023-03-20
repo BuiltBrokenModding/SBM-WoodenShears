@@ -6,6 +6,9 @@ import com.builtbroken.woodenshears.content.WoodTypes;
 import com.builtbroken.woodenshears.content.WoodenShearItem;
 
 import net.minecraft.core.dispenser.ShearsDispenseItemBehavior;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,6 +26,7 @@ import net.minecraftforge.registries.RegisterEvent;
 public class WoodenShears
 {
     public static final String DOMAIN = "woodenshears";
+    public static final TagKey<Item> WSHEARS_TAG = ItemTags.create(new ResourceLocation(DOMAIN, "wshears"));
 
     public WoodenShears()
     {

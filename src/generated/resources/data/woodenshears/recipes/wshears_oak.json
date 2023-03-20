@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "securitycraft:wshears",
+  "key": {
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "t": {
+      "tag": "minecraft:saplings"
+    },
+    "w": {
+      "item": "minecraft:oak_planks"
+    }
+  },
+  "pattern": [
+    "w w",
+    " t ",
+    "s s"
+  ],
+  "result": {
+    "item": "woodenshears:wshears_oak"
+  }
+}

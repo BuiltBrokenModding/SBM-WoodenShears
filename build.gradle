@@ -34,11 +34,26 @@ minecraft {
             workingDirectory project.file('run')
             source sourceSets.main
         }
+        data {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'debug'
+            args '--mod', 'woodenshears', '--all', '--output', file('src/generated/resources/')
+
+            mods {
+                securitycraft {
+                    source sourceSets.main
+                }
+            }
+        }
     }
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19.2-43.2.7'
+}
+
+sourceSets.main.resources {
+	srcDir 'src/generated/resources' //include generated files
 }
 
 jar {

@@ -2,6 +2,8 @@ package com.builtbroken.woodenshears.content;
 import com.builtbroken.woodenshears.WoodenShears;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 /**
@@ -10,28 +12,31 @@ import net.minecraftforge.common.ForgeConfigSpec;
  */
 public enum WoodTypes
 {
-    /* 0 */OAK("oak", "oak"),
-    /* 1 */ACACIA("acacia", "acacia"),
-    /* 2 */BIRCH("birch", "birch"),
-    /* 3 */JUNGLE("jungle", "jungle"),
-    /* 4 */SPRUCE("spruce", "spruce"),
-    /* 5 */BIG_OAK("big_oak", "dark_oak"),
-    /* 6 */CHARRED("charred", "charred"),
-    /* 7 */CRIMSON("crimson", "crimson"),
-    /* 8 */WARPED("warped", "warped"),
-    /* 8 */MANGROVE("mangrove", "mangrove");
+    /* 0 */OAK("oak", "oak", Blocks.OAK_PLANKS),
+    /* 1 */ACACIA("acacia", "acacia", Blocks.ACACIA_PLANKS),
+    /* 2 */BIRCH("birch", "birch", Blocks.BIRCH_PLANKS),
+    /* 3 */JUNGLE("jungle", "jungle", Blocks.JUNGLE_PLANKS),
+    /* 4 */SPRUCE("spruce", "spruce", Blocks.SPRUCE_PLANKS),
+    /* 5 */BIG_OAK("big_oak", "dark_oak", Blocks.DARK_OAK_PLANKS),
+    /* 6 */CHARRED("charred", "charred", null),
+    /* 7 */CRIMSON("crimson", "crimson", Blocks.CRIMSON_PLANKS),
+    /* 8 */WARPED("warped", "warped", Blocks.WARPED_PLANKS),
+    /* 9 */MANGROVE("mangrove", "mangrove", Blocks.MANGROVE_PLANKS);
 
     /** Name to use for textures and localizations */
     public final String itemName;
     /** Prefix for config names */
     public final String configName;
+    /** Planks for recipe generation */
+    public final Block planksBlock;
 
     private ForgeConfigSpec.IntValue durability;
 
-    WoodTypes(String name, String configName)
+    WoodTypes(String name, String configName, Block planksBlock)
     {
         this.itemName = name;
         this.configName = configName;
+        this.planksBlock = planksBlock;
     }
 
     public void genDurabilityConfig(ForgeConfigSpec.Builder builder) {

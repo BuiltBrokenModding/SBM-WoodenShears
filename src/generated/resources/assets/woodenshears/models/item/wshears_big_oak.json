@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "woodenshears:item/wshears_big_oak"
+  }
+}
