@@ -28,5 +28,6 @@
     "recipes": [
       "woodenshears:wshears_birch"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

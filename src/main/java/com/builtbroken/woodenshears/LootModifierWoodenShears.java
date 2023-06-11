@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -43,19 +44,19 @@ public class LootModifierWoodenShears extends LootModifier
         final ItemStack itemStack = context.getParamOrNull(LootContextParams.TOOL);
         if (blockState != null && itemStack.getItem() instanceof WoodenShearItem)
         {
-            return lootTable(context, blockState).getRandomItems(createContext(context));
+            return lootTable(context, blockState).getRandomItems(createParams(context));
         }
         return generatedLoot;
     }
 
     private LootTable lootTable(LootContext context, BlockState blockState)
     {
-        return context.getLootTable(blockState.getBlock().getLootTable());
+        return context.getLevel().getServer().getLootData().getLootTable(blockState.getBlock().getLootTable());
     }
 
-    private LootContext createContext(LootContext context)
+    private LootParams createParams(LootContext context)
     {
-        return new LootContext.Builder(context)
+        return new LootParams.Builder(context.getLevel())
                 .withParameter(LootContextParams.TOOL, new ItemStack(Items.SHEARS))
                 .create(LootContextParamSets.BLOCK);
     }

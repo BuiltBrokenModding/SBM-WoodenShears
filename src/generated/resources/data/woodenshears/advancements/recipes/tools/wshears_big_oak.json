@@ -28,5 +28,6 @@
     "recipes": [
       "woodenshears:wshears_big_oak"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

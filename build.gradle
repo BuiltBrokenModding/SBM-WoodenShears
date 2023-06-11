@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+		classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '[6.0,6.2)', changing: true
         classpath 'org.parchmentmc:librarian:1.+'
     }
 }
@@ -17,12 +17,17 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 version = '1.2.1'
 group = 'woodenshears'
-archivesBaseName = 'SBM-WoodenShears-1.19.4'
+
+base {
+	archivesName = 'SBM-WoodenShears-1.20'
+}
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-    mappings channel: 'parchment', version: '1.19.3-2023.03.12-1.19.4'
+	mappings channel: 'parchment', version: '1.19.3-2023.03.12-1.20'
+	copyIdeResources = true
+
     runs {
         client {
             properties 'forge.logging.console.level': 'debug'
@@ -49,21 +54,24 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.4-45.0.13'
+	minecraft 'net.minecraftforge:forge:1.20-46.0.12'
 }
 
 sourceSets.main.resources {
 	srcDir 'src/generated/resources' //include generated files
 }
 
-jar {
+tasks.named('jar', Jar).configure {
     manifest {
         attributes(["Specification-Title": "SBM-WoodenShears",
                     "Specification-Vendor": "Built Broken Modding",
                     "Specification-Version": "1",
                     "Implementation-Title": "SBM-WoodenShears",
                     "Implementation-Version": "${version}",
-                    "Implementation-Vendor" :"Built Broken Modding",
-                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")],)
+                    "Implementation-Vendor": "Built Broken Modding"],)
     }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }

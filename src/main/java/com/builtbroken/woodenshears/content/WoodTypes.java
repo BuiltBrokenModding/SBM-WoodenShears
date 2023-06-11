@@ -24,8 +24,8 @@ public enum WoodTypes
     /* 7 */CRIMSON("crimson", "crimson", Blocks.CRIMSON_PLANKS),
     /* 8 */WARPED("warped", "warped", Blocks.WARPED_PLANKS),
     /* 9 */MANGROVE("mangrove", "mangrove", Blocks.MANGROVE_PLANKS),
-    /* 10 */BAMBOO("bamboo", "bamboo", Blocks.BAMBOO_PLANKS, FeatureFlags.UPDATE_1_20),
-    /* 11 */CHERRY("cherry", "cherry", Blocks.CHERRY_PLANKS, FeatureFlags.UPDATE_1_20);
+    /* 10 */BAMBOO("bamboo", "bamboo", Blocks.BAMBOO_PLANKS),
+    /* 11 */CHERRY("cherry", "cherry", Blocks.CHERRY_PLANKS);
 
     /** Name to use for textures and localizations */
     public final String itemName;

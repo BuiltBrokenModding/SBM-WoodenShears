@@ -28,5 +28,6 @@
     "recipes": [
       "woodenshears:wshears_bamboo"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -15,7 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.DispenserBlock;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -48,9 +48,9 @@ public class WoodenShears
     }
 
     @SubscribeEvent
-    public static void onCreativeModeTabBuildContents(CreativeModeTabEvent.BuildContents event)
+    public static void onCreativeModeTabBuildContents(BuildCreativeModeTabContentsEvent event)
     {
-        if (event.getTab() == CreativeModeTabs.TOOLS_AND_UTILITIES)
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {
             ItemStack previous = new ItemStack(Items.SHEARS);
 
