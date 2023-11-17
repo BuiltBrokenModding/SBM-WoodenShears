@@ -19,13 +19,13 @@ version = '1.2.1'
 group = 'woodenshears'
 
 base {
-	archivesName = 'SBM-WoodenShears-1.20.1'
+	archivesName = 'SBM-WoodenShears-1.20.2'
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-	mappings channel: 'parchment', version: '1.19.3-2023.03.12-1.20'
+	mappings channel: 'parchment', version: '2023.09.03-1.20.1'
 	copyIdeResources = true
 
     runs {
@@ -54,7 +54,7 @@ minecraft {
 }
 
 dependencies {
-	minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+	minecraft 'net.minecraftforge:forge:1.20.2-48.0.39'
 }
 
 sourceSets.main.resources {
