@@ -16,9 +16,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 
@@ -41,10 +43,17 @@ public class LootModifierWoodenShears extends LootModifier
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context)
     {
         final BlockState blockState = context.getParamOrNull(LootContextParams.BLOCK_STATE);
+        final Vec3 origin = context.getParamOrNull(LootContextParams.ORIGIN);
         final ItemStack itemStack = context.getParamOrNull(LootContextParams.TOOL);
-        if (blockState != null && itemStack.getItem() instanceof WoodenShearItem)
+        if (blockState != null && origin != null && itemStack.getItem() instanceof WoodenShearItem)
         {
-            return lootTable(context, blockState).getRandomItems(createParams(context));
+            return lootTable(context, blockState).getRandomItems(
+                    new LootParams.Builder(context.getLevel())
+                    .withParameter(LootContextParams.TOOL, new ItemStack(Items.SHEARS))
+                    .withParameter(LootContextParams.ORIGIN, origin)
+                    .withParameter(LootContextParams.BLOCK_STATE, blockState)
+                    .create(LootContextParamSets.BLOCK)
+            );
         }
         return generatedLoot;
     }
@@ -52,13 +61,6 @@ public class LootModifierWoodenShears extends LootModifier
     private LootTable lootTable(LootContext context, BlockState blockState)
     {
         return context.getLevel().getServer().getLootData().getLootTable(blockState.getBlock().getLootTable());
-    }
-
-    private LootParams createParams(LootContext context)
-    {
-        return new LootParams.Builder(context.getLevel())
-                .withParameter(LootContextParams.TOOL, new ItemStack(Items.SHEARS))
-                .create(LootContextParamSets.BLOCK);
     }
 
     @Override
