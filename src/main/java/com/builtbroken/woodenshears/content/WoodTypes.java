@@ -6,7 +6,7 @@ import net.minecraft.world.flag.FeatureFlag;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 /**
  * @see <a href="https://github.com/BuiltBrokenModding/VoltzEngine/blob/development/license.md">License</a> for what you can and can't do with the code.
@@ -36,7 +36,7 @@ public enum WoodTypes
     /** Required feature flags for experimental blocks (example: bamboo shear for 1.20 experimental pack) */
     public final FeatureFlag[] requiredFeatures;
 
-    private ForgeConfigSpec.IntValue durability;
+    private ModConfigSpec.IntValue durability;
 
     WoodTypes(String name, String configName, Block planksBlock)
     {
@@ -51,7 +51,7 @@ public enum WoodTypes
         this.requiredFeatures = requiredFeatures;
     }
 
-    public void genDurabilityConfig(ForgeConfigSpec.Builder builder) {
+    public void genDurabilityConfig(ModConfigSpec.Builder builder) {
         durability = builder.defineInRange("durability_" + configName, getDurability(), 1, 10000);
     }
 

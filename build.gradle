@@ -1,60 +1,61 @@
 buildscript {
     repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://maven.parchmentmc.org' }
+        maven { url = 'https://maven.neoforged.net/releases' }
+        //maven { url = 'https://maven.parchmentmc.org' }
         mavenCentral()
     }
     dependencies {
-		classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '[6.0,6.2)', changing: true
-        classpath 'org.parchmentmc:librarian:1.+'
+        //classpath 'org.parchmentmc:librarian:1.+'
     }
 }
-
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
+plugins {
+    id 'java-library'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.neoforged.gradle.userdev' version '7.0.26'
+}
 
 version = '1.2.1'
 group = 'woodenshears'
 
 base {
-	archivesName = 'SBM-WoodenShears-1.20.1'
+	archivesName = 'SBM-WoodenShears-1.20.2'
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-minecraft {
-	mappings channel: 'parchment', version: '1.19.3-2023.03.12-1.20'
-	copyIdeResources = true
+//minecraft {
+	//mappings channel: 'official', version: '1.20.2'
+	//copyIdeResources = true
 
     runs {
+        configureEach{
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            systemProperty 'forge.logging.console.level', 'debug'
+        }
         client {
-            properties 'forge.logging.console.level': 'debug'
-            workingDirectory project.file('run')
-            source sourceSets.main
+            systemProperty 'forge.enabledGameTestNamespaces', 'woodenshears'
         }
         server {
-            properties 'forge.logging.console.level': 'debug'
-            workingDirectory project.file('run')
-            source sourceSets.main
+            systemProperty 'forge.enabledGameTestNamespaces', 'woodenshears'
+            programArgument '--nogui'
         }
         data {
-            workingDirectory project.file('run')
-            property 'forge.logging.console.level', 'debug'
-            args '--mod', 'woodenshears', '--all', '--output', file('src/generated/resources/')
+            programArguments.addAll '--mod', 'woodenshears', '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+            
 
-            mods {
-                securitycraft {
-                    source sourceSets.main
-                }
-            }
+            // mods {
+            //     securitycraft {
+            //         source sourceSets.main
+            //     }
+            // }
         }
     }
-}
+//}
 
 dependencies {
-	minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+	implementation "net.neoforged:neoforge:20.2.35-beta"
 }
 
 sourceSets.main.resources {
