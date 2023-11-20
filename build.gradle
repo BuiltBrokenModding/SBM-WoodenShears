@@ -56,7 +56,6 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 dependencies {
 	implementation "net.neoforged:neoforge:20.2.35-beta"
-}
 
 sourceSets.main.resources {
 	srcDir 'src/generated/resources' //include generated files
