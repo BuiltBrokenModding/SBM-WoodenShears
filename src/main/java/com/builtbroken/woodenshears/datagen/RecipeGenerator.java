@@ -1,27 +1,33 @@
 package com.builtbroken.woodenshears.datagen;
 
 import java.util.Arrays;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 import com.builtbroken.woodenshears.content.WoodTypes;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.registries.ForgeRegistries;
 
 public class RecipeGenerator extends RecipeProvider {
-    public RecipeGenerator(PackOutput output) {
-        super(output);
+   protected final CompletableFuture<HolderLookup.Provider> lookupProvider;
+   
+    public RecipeGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider);
+        this.lookupProvider = lookupProvider;
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(RecipeOutput consumer) {
         Arrays.stream(WoodTypes.values()).forEach(type -> {
             if (type.planksBlock == null)
                 return;
